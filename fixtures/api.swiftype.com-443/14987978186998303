@@ -1,0 +1,24 @@
+POST /api/v1/ent/sources/mockContentSourceKey/documents/bulk_create
+content-type: application/json
+host: api.swiftype.com
+authorization: Bearer mockAccessToken
+accept: application/json
+body: [{\"external_id\":1234,\"title\":\"5 Tips On Finding A Mentor\",\"body\":\"The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.\",\"url\":\"https://www.shopify.com/content/5-tips-on-finding-a-mentor\"},{\"external_id\":1235,\"title\":\"How to Profit from Your Passions\",\"body\":\"Want to know the secret to starting a successful business? Find a void and fill it.\",\"url\":\"https://www.shopify.com/content/how-to-profit-from-your-passions\"}]
+
+HTTP/1.1 202 Accepted
+date: Fri, 30 Jun 2017 04:43:38 GMT
+content-type: application/json; charset=utf-8
+transfer-encoding: chunked
+connection: close
+status: 202 Accepted
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cache-control: no-cache
+set-cookie: _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTJiYmM2MTE3NzRhYTk2Mzc1MzE3M2Y4ZmMxMDcyZjNjBjsAVA%3D%3D--d5279db86af4aa868b428d8dc7b0455bb748114e; path=/; expires=Wed, 30 Jun 2027 04:43:38 -0000; HttpOnly; secure
+set-cookie: st_brid=rBFkBFlV1vpa7EV9AwMKAgS=; expires=Thu, 31-Dec-37 23:55:55 GMT; domain=staging.swiftype.com; path=/
+x-request-id: 38d639d5-fb96-4d21-a2ea-94044ffa5012
+x-runtime: 0.092065
+x-rack-cache: invalidate, pass
+
+{"batch_link":"https://api.swiftype.com/api/v1/ent/document_receipts/bulk_show?ids=5955d6fafd28400169baf97e%2C5955d6fafd28400169baf980","document_receipts":[{"id":"5955d6fafd28400169baf97e","external_id":"1234","status":"pending","errors":[],"links":{"document_receipt":"https://api.swiftype.com/api/v1/ent/document_receipts/5955d6fafd28400169baf97e"}},{"id":"5955d6fafd28400169baf980","external_id":"1235","status":"pending","errors":[],"links":{"document_receipt":"https://api.swiftype.com/api/v1/ent/document_receipts/5955d6fafd28400169baf980"}}]}

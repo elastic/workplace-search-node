@@ -1,0 +1,26 @@
+POST /api/v1/ent/sources/mockContentSourceKey/documents/bulk_destroy
+content-type: application/json
+host: api.swiftype.com
+authorization: Bearer mockAccessToken
+accept: application/json
+body: [1234,1235]
+
+HTTP/1.1 200 OK
+date: Fri, 30 Jun 2017 04:49:43 GMT
+content-type: application/json; charset=utf-8
+transfer-encoding: chunked
+connection: close
+vary: Accept-Encoding, Accept-Encoding
+status: 200 OK
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+etag: W/"fe5ee19a8e9ab3e20b7fb1b8e5349050"
+cache-control: max-age=0, private, must-revalidate
+x-request-id: 9d7b53c5-fd9f-4d00-8c19-7c9d5999609e
+x-runtime: 0.111721
+x-swiftype-datacenter: dal05
+x-swiftype-frontend-node: web01.dal05
+x-swiftype-edge-node: web01.dal05
+
+[{"external_id":1234,"success":true},{"external_id":1235,"success":true}]

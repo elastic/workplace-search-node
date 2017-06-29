@@ -1,0 +1,29 @@
+{
+  "name": "swiftype-enterprise-node",
+  "version": "1.0.0",
+  "description": "Swiftype Enterprise Node.js client",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swiftype/swiftype-enterprise-node.git"
+  },
+  "engines": {
+    "node": ">= v6.5.0"
+  },
+  "author": "Swiftype",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swiftype/swiftype-enterprise-node/issues"
+  },
+  "homepage": "https://github.com/swiftype/swiftype-enterprise-node#readme",
+  "devDependencies": {
+    "mocha": "^3.4.2",
+    "replay": "^2.1.2"
+  },
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
