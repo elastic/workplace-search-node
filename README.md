@@ -18,7 +18,7 @@ or clone locally:
 
 Create a new instance of the Swiftype Enterprise Client with your access token:
 
-    const SwiftypeEnterpriseClient = require('swiftypeEnterprise')
+    const SwiftypeEnterpriseClient = require('swiftype-enterprise-node')
     const accessToken = '' // your access token
     const swiftype = new SwiftypeEnterpriseClient(accessToken)
 

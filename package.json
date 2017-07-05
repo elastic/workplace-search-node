@@ -2,7 +2,8 @@
   "name": "swiftype-enterprise-node",
   "version": "1.0.0",
   "description": "Swiftype Enterprise Node.js client",
-  "main": "index.js",
+  "files": "lib/",
+  "main": "lib/swiftypeEnterprise.js",
   "scripts": {
     "test": "mocha"
   },
