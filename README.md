@@ -87,7 +87,7 @@ When using this method, you are responsible for checking the indexing result for
       }
     ]
 
-    swiftype.asyncIndexDocuments(mockContentSourceKey, mockDocuments)
+    swiftype.asyncIndexDocuments(contentSourceKey, documents)
     .then((documentReceiptIds) => {
       // handle document receipt IDs
     })
