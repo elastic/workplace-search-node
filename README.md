@@ -1,6 +1,18 @@
-# Node.js client for the Swiftype Enterprise Api
+<p align="center"><img src="https://github.com/swiftype/swiftype-enterprise-node/blob/master/logo-enterprise-search.png?raw=true" alt="Elastic Enterprise Search Logo"></p>
 
-## Installation
+> A first-party Node.js client for [Elastic Enterprise Search](https://www.elastic.co/solutions/enterprise-search).
+
+## Contents
+
++ [Getting started](#getting-started-)
++ [Usage](#usage)
++ [FAQ](#faq-)
++ [Contribute](#contribute-)
++ [License](#license-)
+
+***
+
+## Getting started 🐣
 
 With npm:
 
@@ -13,8 +25,6 @@ or clone locally:
     $ npm install
 
 ## Usage
-
-### Setup
 
 Create a new instance of the Swiftype Enterprise Client with your access token:
 
@@ -95,7 +105,6 @@ When using this method, you are responsible for checking the indexing result for
       // handle error
     })
 
-
 ### Checking Document Receipts
 
 Works in conjunction with the asyncIndexDocuments method above.
@@ -111,7 +120,29 @@ Works in conjunction with the asyncIndexDocuments method above.
       // handle error
     })
 
+## Running tests
 
-## Running Tests
+Run tests via npm:
 
-    $ npm test
+```bash
+$ npm test
+```
+
+## FAQ 🔮
+
+### Where do I report issues with the client?
+
+If something is not working as expected, please open an [issue](https://github.com/swiftype/swiftype-enterprise-node/issues/new).
+
+## Contribute 🚀
+
+We welcome contributors to the project. Before you begin, a couple notes...
+
++ Before opening a pull request, please create an issue to [discuss the scope of your proposal](https://github.com/swiftype/swiftype-enterprise-node/issues).
++ Please write simple code and concise documentation, when appropriate.
+
+## License 📗
+
+[MIT](https://github.com/swiftype/swiftype-enterprise-node/blob/master/LICENSE) © [Elastic](https://github.com/elastic)
+
+Thank you to all the [contributors](https://github.com/swiftype/swiftype-enterprise-node/graphs/contributors)!
