@@ -1,6 +1,6 @@
 const assert = require('assert')
 const SwiftypeEnterpriseClient = require('../lib/swiftypeEnterprise')
-const replay  = require('replay');
+const replay  = require('replay')
 
 const mockAccessToken = 'mockAccessToken'
 const mockContentSourceKey = 'mockContentSourceKey'
@@ -22,48 +22,23 @@ const mockDocuments = [
 describe('SwiftypeEnterpriseClient', () => {
   const swiftype = new SwiftypeEnterpriseClient(mockAccessToken)
 
-  describe('#asyncIndexDocuments', () => {
-    it('should index documents asynchronously', (done) => {
-      swiftype.asyncIndexDocuments(mockContentSourceKey, mockDocuments)
-      .then((documentReceiptIds) => {
-        assert.deepEqual(['5955d6fafd28400169baf97e', '5955d6fafd28400169baf980'], documentReceiptIds)
-        done()
-      })
-      .catch((error) => {
-        done(error)
-      })
-    })
-  })
-
   describe('#indexDocuments', () => {
-    it('should index documents synchronously', (done) => {
-      swiftype.indexDocuments(mockContentSourceKey, mockDocuments)
-      .then((documentReceipts) => {
-        assert.deepEqual([
-          {
-            id: '5955d6fafd28400169baf97e',
-            external_id: '1234',
-            status: 'complete',
-            errors: [],
-            links: {
-              document_receipt:'https://api.swiftype.com/api/v1/ent/document_receipts/5955d6fafd28400169baf97e'
-            }
-          },
-          {
-            id: '5955d6fafd28400169baf980',
-            external_id: '1235',
-            status: 'complete',
-            errors: [],
-            links: {
-              document_receipt: 'https://api.swiftype.com/api/v1/ent/document_receipts/5955d6fafd28400169baf980'
-            }
-          }
-        ], documentReceipts)
-        done()
-      })
-      .catch((error) => {
-        done(error)
-      })
+    it('should index documents', done => {
+      swiftype
+        .indexDocuments(mockContentSourceKey, mockDocuments)
+        .then(results => {
+          assert.deepEqual(
+            [
+              { id: null, external_id: '1234', errors: [] },
+              { id: null, external_id: '1235', errors: [] }
+            ],
+            results
+          )
+          done()
+        })
+        .catch(error => {
+          done(error)
+        })
     })
   })
 
@@ -80,6 +55,3 @@ describe('SwiftypeEnterpriseClient', () => {
     })
   })
 })
-
-
-

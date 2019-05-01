@@ -21,4 +21,4 @@ x-request-id: 38d639d5-fb96-4d21-a2ea-94044ffa5012
 x-runtime: 0.092065
 x-rack-cache: invalidate, pass
 
-{"batch_link":"https://api.swiftype.com/api/v1/ent/document_receipts/bulk_show?ids=5955d6fafd28400169baf97e%2C5955d6fafd28400169baf980","document_receipts":[{"id":"5955d6fafd28400169baf97e","external_id":"1234","status":"pending","errors":[],"links":{"document_receipt":"https://api.swiftype.com/api/v1/ent/document_receipts/5955d6fafd28400169baf97e"}},{"id":"5955d6fafd28400169baf980","external_id":"1235","status":"pending","errors":[],"links":{"document_receipt":"https://api.swiftype.com/api/v1/ent/document_receipts/5955d6fafd28400169baf980"}}]}
+[{"id":null,"external_id":"1234","errors":[]},{"id":null,"external_id":"1235","errors":[]}]
