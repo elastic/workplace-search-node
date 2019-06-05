@@ -39,13 +39,13 @@ This example shows how to use the indexDocuments method:
     const contentSourceKey = '' // your content source key
     const documents = [
       {
-        external_id: 1234,
+        id: 1234,
         title: "5 Tips On Finding A Mentor",
         body: "The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.",
         url: "https://www.shopify.com/content/5-tips-on-finding-a-mentor"
       },
       {
-        external_id: 1235,
+        id: 1235,
         title: "How to Profit from Your Passions",
         body: "Want to know the secret to starting a successful business? Find a void and fill it.",
         url: "https://www.shopify.com/content/how-to-profit-from-your-passions"
@@ -63,9 +63,9 @@ This example shows how to use the indexDocuments method:
 ### Destroying Documents
 
     const contentSourceKey = '' // your content source key
-    const documentExternalIds = [1234, 1235]
+    const documentIds = [1234, 1235]
 
-    swiftype.destroyDocuments(contentSourceKey, documentExternalIds)
+    swiftype.destroyDocuments(contentSourceKey, documentIds)
     .then((destroyDocumentsResults) => {
       // handle destroy documents results
     })

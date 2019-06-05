@@ -23,4 +23,4 @@ x-swiftype-datacenter: dal05
 x-swiftype-frontend-node: web01.dal05
 x-swiftype-edge-node: web01.dal05
 
-[{"external_id":1234,"success":true},{"external_id":1235,"success":true}]
+[{"id":1234,"success":true},{"id":1235,"success":true}]
