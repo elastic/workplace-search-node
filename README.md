@@ -32,6 +32,12 @@ Create a new instance of the Swiftype Enterprise Client with your access token:
     const accessToken = '' // your access token
     const swiftype = new SwiftypeEnterpriseClient(accessToken)
 
+### Change API endpoint
+
+```
+const swiftype = new SwiftypeEnterpriseClient(accessToken, 'https://your-server.example.com/api/v1/ent')
+```
+
 ### Indexing Documents
 
 This example shows how to use the indexDocuments method:
