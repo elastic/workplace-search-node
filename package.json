@@ -1,6 +1,6 @@
 {
   "name": "swiftype-enterprise-node",
-  "version": "3.0.0",
+  "version": "7.2.0-beta.2",
   "description": "Swiftype Enterprise Node.js client",
   "files": [
     "lib/"
