@@ -20,7 +20,7 @@ const mockDocuments = [
 ]
 
 describe('SwiftypeEnterpriseClient', () => {
-  const swiftype = new SwiftypeEnterpriseClient(mockAccessToken)
+  const swiftype = new SwiftypeEnterpriseClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
 
   describe('#indexDocuments', () => {
     it('should index documents', done => {
