@@ -1,5 +1,5 @@
 const assert = require('assert')
-const SwiftypeEnterpriseClient = require('../lib/swiftypeEnterprise')
+const EnterpriseSearchClient = require('../lib/enterpriseSearch')
 const replay  = require('replay')
 
 const mockAccessToken = 'mockAccessToken'
@@ -19,12 +19,12 @@ const mockDocuments = [
   }
 ]
 
-describe('SwiftypeEnterpriseClient', () => {
-  const swiftype = new SwiftypeEnterpriseClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
+describe('EnterpriseSearchClient', () => {
+  const client = new EnterpriseSearchClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
 
   describe('#indexDocuments', () => {
     it('should index documents', done => {
-      swiftype
+      client
         .indexDocuments(mockContentSourceKey, mockDocuments)
         .then(results => {
           assert.deepEqual(
@@ -44,7 +44,7 @@ describe('SwiftypeEnterpriseClient', () => {
 
   describe('#destroyDocuments', () => {
     it('should destroy documents', (done) => {
-      swiftype.destroyDocuments(mockContentSourceKey, mockDocuments.map((doc) => doc.id))
+      client.destroyDocuments(mockContentSourceKey, mockDocuments.map((doc) => doc.id))
       .then((documentDestroyResults) => {
         assert.deepEqual([{ id: 1234, success: true }, { id: 1235, success: true }], documentDestroyResults)
         done()

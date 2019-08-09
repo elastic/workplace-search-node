@@ -1,27 +1,27 @@
 {
-  "name": "swiftype-enterprise-node",
+  "name": "@elastic/enterprise-search-node",
   "version": "3.0.1",
-  "description": "Swiftype Enterprise Node.js client",
+  "description": "Elastic Enterprise Search client for Node.js",
   "files": [
     "lib/"
   ],
-  "main": "lib/swiftypeEnterprise.js",
+  "main": "lib/enterpriseSearch.js",
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/swiftype/swiftype-enterprise-node.git"
+    "url": "git+https://github.com/elastic/enterprise-search-node.git"
   },
   "engines": {
     "node": ">= v6.5.0"
   },
-  "author": "Swiftype",
-  "license": "MIT",
+  "author": "Elastic",
+  "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/swiftype/swiftype-enterprise-node/issues"
+    "url": "https://github.com/elastic/enterprise-search-node/issues"
   },
-  "homepage": "https://github.com/swiftype/swiftype-enterprise-node#readme",
+  "homepage": "https://github.com/elastic/enterprise-search-node#readme",
   "devDependencies": {
     "mocha": "^6.2.0",
     "replay": "^2.4.0"
