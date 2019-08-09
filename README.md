@@ -56,15 +56,13 @@ const documents = [
   {
     id: 1234,
     title: "5 Tips On Finding A Mentor",
-    body:
-      "The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.",
+    body: "The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.",
     url: "https://www.shopify.com/content/5-tips-on-finding-a-mentor"
   },
   {
     id: 1235,
     title: "How to Profit from Your Passions",
-    body:
-      "Want to know the secret to starting a successful business? Find a void and fill it.",
+    body: "Want to know the secret to starting a successful business? Find a void and fill it.",
     url: "https://www.shopify.com/content/how-to-profit-from-your-passions"
   }
 ];
