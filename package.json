@@ -24,6 +24,7 @@
   "homepage": "https://github.com/swiftype/swiftype-enterprise-node#readme",
   "devDependencies": {
     "mocha": "^6.2.0",
+    "nock": "^10.0.6"
   },
   "dependencies": {
     "request": "^2.88.0"
