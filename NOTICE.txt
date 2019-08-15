@@ -1,0 +1,2 @@
+Elastic Enterprise Search Node.js client.
+Copyright 2012-2019 Elasticsearch B.V.
