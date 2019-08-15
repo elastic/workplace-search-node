@@ -2,7 +2,7 @@
 
 const assert = require('assert')
 const nock = require('nock')
-const SwiftypeEnterpriseClient = require('../lib/swiftypeEnterprise')
+const EnterpriseSearchClient = require('../lib/enterpriseSearch')
 const HttpClient = require('../lib/client')
 const packageJson = require('../package.json')
 
@@ -22,12 +22,15 @@ const mockDocuments = [
     url: 'https://www.shopify.com/content/how-to-profit-from-your-passions'
   }
 ]
+const clientName = "elastic-enterprise-search-node"
+const clientVersion = "3.0.1"
 
-// Mock for Swiftype client
+// Mock for Enterprise Search client
 nock('https://api.swiftype.com/api/v1/ent', {
     reqheaders: {
       authorization: `Bearer ${mockAccessToken}`,
-      'user-agent': `${packageJson.name}/${packageJson.version}`
+      "x-swiftype-client": clientName,
+      "x-swiftype-client-version": clientVersion
     }
   })
   .post(`/sources/${mockContentSourceKey}/documents/bulk_create`)
@@ -45,7 +48,8 @@ nock('https://api.swiftype.com/api/v1/ent', {
 nock('https://example.com', {
     reqheaders: {
       authorization: `Bearer ${mockAccessToken}`,
-      'user-agent': `${packageJson.name}/${packageJson.version}`
+      "x-swiftype-client": clientName,
+      "x-swiftype-client-version": clientVersion
     }
   })
   .get('/get?foo=bar')
@@ -53,12 +57,12 @@ nock('https://example.com', {
   .post('/post', { foo: 'bar' })
   .reply(200, { hello: 'world' })
 
-describe('SwiftypeEnterpriseClient', () => {
-  const swiftype = new SwiftypeEnterpriseClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
+describe('EnterpriseSearchClient', () => {
+  const client = new EnterpriseSearchClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
 
   context('#indexDocuments', () => {
     it('should index documents', async () => {
-      const results = await swiftype.indexDocuments(mockContentSourceKey, mockDocuments)
+      const results = await client.indexDocuments(mockContentSourceKey, mockDocuments)
       assert.deepEqual(results, [
         { id: null, id: '1234', errors: [] },
         { id: null, id: '1235', errors: [] }
@@ -68,7 +72,7 @@ describe('SwiftypeEnterpriseClient', () => {
 
   context('#destroyDocuments', () => {
     it('should destroy documents', async () => {
-      const results = await swiftype.destroyDocuments(mockContentSourceKey, mockDocuments.map((doc) => doc.id))
+      const results = await client.destroyDocuments(mockContentSourceKey, mockDocuments.map((doc) => doc.id))
       assert.deepEqual(results, [
         { id: 1234, success: true },
         { id: 1235, success: true }
