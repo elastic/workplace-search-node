@@ -1,5 +1,9 @@
 <p align="center"><img src="https://github.com/swiftype/swiftype-enterprise-node/blob/master/logo-enterprise-search.png?raw=true" alt="Elastic Enterprise Search Logo"></p>
 
+> **⚠️ This client is deprecated ⚠️**
+>
+> **swiftype-enterprise-node has been replaced by @elastic/enterprise-search-node. Thank you! - Elastic**
+
 > A first-party Node.js client for [Elastic Enterprise Search](https://www.elastic.co/solutions/enterprise-search).
 
 ## Contents
