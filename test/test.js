@@ -56,6 +56,10 @@ nock('https://example.com', {
   .reply(200, { hello: 'world' })
   .post('/post', { foo: 'bar' })
   .reply(200, { hello: 'world' })
+  .get('/error')
+  .reply(500, { hello: 'world' })
+  .post('/error', { foo: 'bar' })
+  .reply(500, { hello: 'world' })
 
 describe('EnterpriseSearchClient', () => {
   const client = new EnterpriseSearchClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
@@ -89,12 +93,30 @@ describe('http client', () => {
       const response = await client.get('/get', { foo: 'bar' })
       assert.deepEqual(response, { hello: 'world' })
     })
+
+    it('should handle errors', async () => {
+      try {
+        await client.get('/error')
+        process.exit(1)
+      } catch (err) {
+        assert(err)
+      }
+    })
   })
 
   context('#post', () => {
     it('should send post request', async () => {
       const response = await client.post('/post', { foo: 'bar' })
       assert.deepEqual(response, { hello: 'world' })
+    })
+
+    it('should handle errors', async () => {
+      try {
+        await client.post('/error', { foo: 'bar' })
+        process.exit(1)
+      } catch (err) {
+        assert(err)
+      }
     })
   })
 })
