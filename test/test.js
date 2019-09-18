@@ -56,6 +56,10 @@ nock('https://example.com', {
   .reply(200, { hello: 'world' })
   .post('/post', { foo: 'bar' })
   .reply(200, { hello: 'world' })
+  .get('/error')
+  .reply(500, { hello: 'world' })
+  .post('/error', { foo: 'bar' })
+  .reply(500, { hello: 'world' })
 
 describe('EnterpriseSearchClient', () => {
   const client = new EnterpriseSearchClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
@@ -89,12 +93,52 @@ describe('http client', () => {
       const response = await client.get('/get', { foo: 'bar' })
       assert.deepEqual(response, { hello: 'world' })
     })
+
+    it('should handle errors', async () => {
+      const err = new Error('Internal Server Error')
+      err.statusCode = 500
+      err.headers = { 'content-type': 'application/json' }
+      err.body = { hello: 'world' }
+      await assert.rejects(client.get('/error'), err)
+    })
+
+    it('should handle errors (connection error)', async () => {
+      const client = new HttpClient(mockAccessToken, 'https://test.example.com')
+      await assert.rejects(client.get('/error'), {
+        errno: 'ENOTFOUND',
+        code: 'ENOTFOUND',
+        syscall: 'getaddrinfo',
+        hostname: 'test.example.com',
+        host: 'test.example.com',
+        port: 443 }
+      )
+    })
   })
 
   context('#post', () => {
     it('should send post request', async () => {
       const response = await client.post('/post', { foo: 'bar' })
       assert.deepEqual(response, { hello: 'world' })
+    })
+
+    it('should handle errors', async () => {
+      const err = new Error('Internal Server Error')
+      err.statusCode = 500
+      err.headers = { 'content-type': 'application/json' }
+      err.body = { hello: 'world' }
+      await assert.rejects(client.post('/error', { foo: 'bar' }), err)
+    })
+
+    it('should handle errors (connection error)', async () => {
+      const client = new HttpClient(mockAccessToken, 'https://test.example.com')
+      await assert.rejects(client.post('/error', { foo: 'bar' }), {
+        errno: 'ENOTFOUND',
+        code: 'ENOTFOUND',
+        syscall: 'getaddrinfo',
+        hostname: 'test.example.com',
+        host: 'test.example.com',
+        port: 443 }
+      )
     })
   })
 })
