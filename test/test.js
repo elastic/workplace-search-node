@@ -95,12 +95,23 @@ describe('http client', () => {
     })
 
     it('should handle errors', async () => {
-      try {
-        await client.get('/error')
-        process.exit(1)
-      } catch (err) {
-        assert(err)
-      }
+      const err = new Error('Internal Server Error')
+      err.statusCode = 500
+      err.headers = { 'content-type': 'application/json' }
+      err.body = { hello: 'world' }
+      await assert.rejects(client.get('/error'), err)
+    })
+
+    it('should handle errors (connection error)', async () => {
+      const client = new HttpClient(mockAccessToken, 'https://test.example.com')
+      await assert.rejects(client.get('/error'), {
+        errno: 'ENOTFOUND',
+        code: 'ENOTFOUND',
+        syscall: 'getaddrinfo',
+        hostname: 'test.example.com',
+        host: 'test.example.com',
+        port: 443 }
+      )
     })
   })
 
@@ -111,12 +122,23 @@ describe('http client', () => {
     })
 
     it('should handle errors', async () => {
-      try {
-        await client.post('/error', { foo: 'bar' })
-        process.exit(1)
-      } catch (err) {
-        assert(err)
-      }
+      const err = new Error('Internal Server Error')
+      err.statusCode = 500
+      err.headers = { 'content-type': 'application/json' }
+      err.body = { hello: 'world' }
+      await assert.rejects(client.post('/error', { foo: 'bar' }), err)
+    })
+
+    it('should handle errors (connection error)', async () => {
+      const client = new HttpClient(mockAccessToken, 'https://test.example.com')
+      await assert.rejects(client.post('/error', { foo: 'bar' }), {
+        errno: 'ENOTFOUND',
+        code: 'ENOTFOUND',
+        syscall: 'getaddrinfo',
+        hostname: 'test.example.com',
+        host: 'test.example.com',
+        port: 443 }
+      )
     })
   })
 })
