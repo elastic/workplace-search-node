@@ -1,6 +1,6 @@
 {
   "name": "@elastic/enterprise-search-node",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Elastic Enterprise Search client for Node.js",
   "files": [
     "lib/"
