@@ -54,7 +54,7 @@ nock('https://api.swiftype.com/api/v1/ent', {
     meta: { page: { current: 1, total_pages: 2, total_results: 2, size: 1 } },
     results: [{ user: 'elastic', permissions: [] }]
   })
-  .get(`/sources/${mockContentSourceKey}/permissions`) // TODO check this case with real API
+  .get(`/sources/${mockContentSourceKey}/permissions`)
   .query({ page: { current: 2 } })
   .reply(200, {
     meta: { page: { current: 2, total_pages: 1, total_results: 2, size: 25 } },
