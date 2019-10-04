@@ -97,7 +97,7 @@ client
 
 ```javascript
 const contentSourceKey = ""; // your content source key
-const pageParams = { current: 2, size: 20 }; // current page and page size (optional argument)
+const pageParams = { currentPage: 2, pageSize: 20 }; // optional argument
 
 client
   .getPermissions(contentSourceKey, pageParams)
