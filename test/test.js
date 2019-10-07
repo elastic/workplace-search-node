@@ -12,18 +12,20 @@ const mockDocuments = [
   {
     id: 1234,
     title: '5 Tips On Finding A Mentor',
-    body: 'The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.',
+    body:
+      'The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.',
     url: 'https://www.shopify.com/content/5-tips-on-finding-a-mentor'
   },
   {
     id: 1235,
     title: 'How to Profit from Your Passions',
-    body: 'Want to know the secret to starting a successful business? Find a void and fill it.',
+    body:
+      'Want to know the secret to starting a successful business? Find a void and fill it.',
     url: 'https://www.shopify.com/content/how-to-profit-from-your-passions'
   }
 ]
-const clientName = "elastic-enterprise-search-node"
-const clientVersion = "0.2.0"
+const clientName = 'elastic-enterprise-search-node'
+const clientVersion = '0.2.0'
 
 // Mock for Enterprise Search client
 nock('https://api.swiftype.com/api/v1/ent', {
@@ -69,12 +71,12 @@ nock('https://api.swiftype.com/api/v1/ent', {
 
 // Mock for underlying http client libry
 nock('https://example.com', {
-    reqheaders: {
-      authorization: `Bearer ${mockAccessToken}`,
-      "x-swiftype-client": clientName,
-      "x-swiftype-client-version": clientVersion
-    }
-  })
+  reqheaders: {
+    authorization: `Bearer ${mockAccessToken}`,
+    'x-swiftype-client': clientName,
+    'x-swiftype-client-version': clientVersion
+  }
+})
   .get('/get?foo=bar')
   .reply(200, { hello: 'world' })
   .post('/post', { foo: 'bar' })
@@ -85,11 +87,17 @@ nock('https://example.com', {
   .reply(500, { hello: 'world' })
 
 describe('EnterpriseSearchClient', () => {
-  const client = new EnterpriseSearchClient(mockAccessToken, 'https://api.swiftype.com/api/v1/ent')
+  const client = new EnterpriseSearchClient(
+    mockAccessToken,
+    'https://api.swiftype.com/api/v1/ent'
+  )
 
   context('#indexDocuments', () => {
     it('should index documents', async () => {
-      const results = await client.indexDocuments(mockContentSourceKey, mockDocuments)
+      const results = await client.indexDocuments(
+        mockContentSourceKey,
+        mockDocuments
+      )
       assert.deepEqual(results, [
         { id: null, id: '1234', errors: [] },
         { id: null, id: '1235', errors: [] }
@@ -99,7 +107,10 @@ describe('EnterpriseSearchClient', () => {
 
   context('#destroyDocuments', () => {
     it('should destroy documents', async () => {
-      const results = await client.destroyDocuments(mockContentSourceKey, mockDocuments.map((doc) => doc.id))
+      const results = await client.destroyDocuments(
+        mockContentSourceKey,
+        mockDocuments.map(doc => doc.id)
+      )
       assert.deepEqual(results, [
         { id: 1234, success: true },
         { id: 1235, success: true }
@@ -185,8 +196,8 @@ describe('http client', () => {
         syscall: 'getaddrinfo',
         hostname: 'test.example.com',
         host: 'test.example.com',
-        port: 443 }
-      )
+        port: 443
+      })
     })
   })
 
@@ -212,8 +223,8 @@ describe('http client', () => {
         syscall: 'getaddrinfo',
         hostname: 'test.example.com',
         host: 'test.example.com',
-        port: 443 }
-      )
+        port: 443
+      })
     })
   })
 })
