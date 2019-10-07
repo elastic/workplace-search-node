@@ -93,6 +93,22 @@ client
   });
 ```
 
+### Getting permissions list
+
+```javascript
+const contentSourceKey = ""; // your content source key
+const pageParams = { currentPage: 2, pageSize: 20 }; // optional argument
+
+client
+  .getPermissions(contentSourceKey, pageParams)
+  .then(response => {
+    // handle response
+  })
+  .catch(error => {
+    // handle error
+  });
+```
+
 ## Running tests
 
 Run tests via npm:

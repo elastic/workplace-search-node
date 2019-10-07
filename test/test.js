@@ -27,22 +27,45 @@ const clientVersion = "0.2.0"
 
 // Mock for Enterprise Search client
 nock('https://api.swiftype.com/api/v1/ent', {
-    reqheaders: {
-      authorization: `Bearer ${mockAccessToken}`,
-      "x-swiftype-client": clientName,
-      "x-swiftype-client-version": clientVersion
-    }
-  })
+  reqheaders: {
+    authorization: `Bearer ${mockAccessToken}`,
+    'x-swiftype-client': clientName,
+    'x-swiftype-client-version': clientVersion
+  }
+})
   .post(`/sources/${mockContentSourceKey}/documents/bulk_create`)
   .reply(200, [
     { id: null, id: '1234', errors: [] },
     { id: null, id: '1235', errors: [] }
   ])
   .post(`/sources/${mockContentSourceKey}/documents/bulk_destroy`)
-  .reply(200, [
-    { id: 1234, success: true },
-    { id: 1235, success: true }
-  ])
+  .reply(200, [{ id: 1234, success: true }, { id: 1235, success: true }])
+  .get(`/sources/${mockContentSourceKey}/permissions`)
+  .reply(200, {
+    meta: { page: { current: 1, total_pages: 1, total_results: 2, size: 25 } },
+    results: [
+      { user: 'elastic', permissions: [] },
+      { user: 'enterprise_search', permissions: [] }
+    ]
+  })
+  .get(`/sources/${mockContentSourceKey}/permissions`)
+  .query({ page: { size: 1 } })
+  .reply(200, {
+    meta: { page: { current: 1, total_pages: 2, total_results: 2, size: 1 } },
+    results: [{ user: 'elastic', permissions: [] }]
+  })
+  .get(`/sources/${mockContentSourceKey}/permissions`)
+  .query({ page: { current: 2 } })
+  .reply(200, {
+    meta: { page: { current: 2, total_pages: 1, total_results: 2, size: 25 } },
+    results: []
+  })
+  .get(`/sources/${mockContentSourceKey}/permissions`)
+  .query({ page: { size: 1, current: 2 } })
+  .reply(200, {
+    meta: { page: { current: 2, total_pages: 2, total_results: 2, size: 1 } },
+    results: [{ user: 'enterprise_search', permissions: [] }]
+  })
 
 // Mock for underlying http client libry
 nock('https://example.com', {
@@ -81,6 +104,58 @@ describe('EnterpriseSearchClient', () => {
         { id: 1234, success: true },
         { id: 1235, success: true }
       ])
+    })
+  })
+
+  context('#permissions', () => {
+    it('should list permissions', async () => {
+      const results = await client.getPermissions(mockContentSourceKey)
+      assert.deepEqual(results, {
+        meta: {
+          page: { current: 1, total_pages: 1, total_results: 2, size: 25 }
+        },
+        results: [
+          { user: 'elastic', permissions: [] },
+          { user: 'enterprise_search', permissions: [] }
+        ]
+      })
+    })
+
+    it('should pass page size', async () => {
+      const results = await client.getPermissions(mockContentSourceKey, {
+        pageSize: 1
+      })
+      assert.deepEqual(results, {
+        meta: {
+          page: { current: 1, total_pages: 2, total_results: 2, size: 1 }
+        },
+        results: [{ user: 'elastic', permissions: [] }]
+      })
+    })
+
+    it('should pass current page', async () => {
+      const results = await client.getPermissions(mockContentSourceKey, {
+        currentPage: 2
+      })
+      assert.deepEqual(results, {
+        meta: {
+          page: { current: 2, total_pages: 1, total_results: 2, size: 25 }
+        },
+        results: []
+      })
+    })
+
+    it('should pass page size and current page', async () => {
+      const results = await client.getPermissions(mockContentSourceKey, {
+        pageSize: 1,
+        currentPage: 2
+      })
+      assert.deepEqual(results, {
+        meta: {
+          page: { current: 2, total_pages: 2, total_results: 2, size: 1 }
+        },
+        results: [{ user: 'enterprise_search', permissions: [] }]
+      })
     })
   })
 })
