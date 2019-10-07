@@ -68,6 +68,10 @@ nock('https://api.swiftype.com/api/v1/ent', {
     meta: { page: { current: 2, total_pages: 2, total_results: 2, size: 1 } },
     results: [{ user: 'enterprise_search', permissions: [] }]
   })
+  .post(`/sources/${mockContentSourceKey}/permissions/enterprise_search`, {
+    permissions: ['permission1']
+  })
+  .reply(200, { user: 'enterprise_search', permissions: ['permission1'] })
 
 // Mock for underlying http client libry
 nock('https://example.com', {
@@ -166,6 +170,20 @@ describe('EnterpriseSearchClient', () => {
           page: { current: 2, total_pages: 2, total_results: 2, size: 1 }
         },
         results: [{ user: 'enterprise_search', permissions: [] }]
+      })
+    })
+  })
+
+  context('#permissions/{user} (POST)', () => {
+    it('should update user permissions', async () => {
+      const results = await client.updateUserPermissions(
+        mockContentSourceKey,
+        'enterprise_search',
+        ['permission1']
+      )
+      assert.deepEqual(results, {
+        user: 'enterprise_search',
+        permissions: ['permission1']
       })
     })
   })
