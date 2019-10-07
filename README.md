@@ -6,13 +6,13 @@
 
 ## Contents
 
-+ [Getting started](#getting-started-)
-+ [Usage](#usage)
-+ [FAQ](#faq-)
-+ [Contribute](#contribute-)
-+ [License](#license-)
+- [Getting started](#getting-started-)
+- [Usage](#usage)
+- [FAQ](#faq-)
+- [Contribute](#contribute-)
+- [License](#license-)
 
-***
+---
 
 ## Getting started 🐣
 
@@ -35,15 +35,18 @@ npm install
 Create a new instance of the Elastic Enterprise Search Client with your access token:
 
 ```javascript
-const EnterpriseSearchClient = require("@elastic/enterprise-search-node");
-const accessToken = ""; // your access token
-const client = new EnterpriseSearchClient(accessToken);
+const EnterpriseSearchClient = require('@elastic/enterprise-search-node')
+const accessToken = '' // your access token
+const client = new EnterpriseSearchClient(accessToken)
 ```
 
 ### Change API endpoint
 
 ```javascript
-const client = new EnterpriseSearchClient(accessToken, 'https://your-server.example.com/api/v1/ent')
+const client = new EnterpriseSearchClient(
+  accessToken,
+  'https://your-server.example.com/api/v1/ent'
+)
 ```
 
 ### Indexing Documents
@@ -51,21 +54,23 @@ const client = new EnterpriseSearchClient(accessToken, 'https://your-server.exam
 This example shows how to use the indexDocuments method:
 
 ```javascript
-const contentSourceKey = ""; // your content source key
+const contentSourceKey = '' // your content source key
 const documents = [
   {
     id: 1234,
-    title: "5 Tips On Finding A Mentor",
-    body: "The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.",
-    url: "https://www.shopify.com/content/5-tips-on-finding-a-mentor"
+    title: '5 Tips On Finding A Mentor',
+    body:
+      'The difference between a budding entrepreneur who merely shows promise and one who is already enjoying some success often comes down to mentoring.',
+    url: 'https://www.shopify.com/content/5-tips-on-finding-a-mentor'
   },
   {
     id: 1235,
-    title: "How to Profit from Your Passions",
-    body: "Want to know the secret to starting a successful business? Find a void and fill it.",
-    url: "https://www.shopify.com/content/how-to-profit-from-your-passions"
+    title: 'How to Profit from Your Passions',
+    body:
+      'Want to know the secret to starting a successful business? Find a void and fill it.',
+    url: 'https://www.shopify.com/content/how-to-profit-from-your-passions'
   }
-];
+]
 
 client
   .indexDocuments(contentSourceKey, documents)
@@ -74,14 +79,14 @@ client
   })
   .catch(error => {
     // handle error
-  });
+  })
 ```
 
 ### Destroying Documents
 
 ```javascript
-const contentSourceKey = ""; // your content source key
-const documentIds = [1234, 1235];
+const contentSourceKey = '' // your content source key
+const documentIds = [1234, 1235]
 
 client
   .destroyDocuments(contentSourceKey, documentIds)
@@ -90,14 +95,14 @@ client
   })
   .catch(error => {
     // handle error
-  });
+  })
 ```
 
 ### Getting permissions list
 
 ```javascript
-const contentSourceKey = ""; // your content source key
-const pageParams = { currentPage: 2, pageSize: 20 }; // optional argument
+const contentSourceKey = '' // your content source key
+const pageParams = { currentPage: 2, pageSize: 20 } // optional argument
 
 client
   .getPermissions(contentSourceKey, pageParams)
@@ -106,7 +111,7 @@ client
   })
   .catch(error => {
     // handle error
-  });
+  })
 ```
 
 ## Running tests
@@ -127,8 +132,8 @@ If something is not working as expected, please open an [issue](https://github.c
 
 We welcome contributors to the project. Before you begin, a couple notes...
 
-+ Before opening a pull request, please create an issue to [discuss the scope of your proposal](https://github.com/elastic/enterprise-search-node/issues).
-+ Please write simple code and concise documentation, when appropriate.
+- Before opening a pull request, please create an issue to [discuss the scope of your proposal](https://github.com/elastic/enterprise-search-node/issues).
+- Please write simple code and concise documentation, when appropriate.
 
 ## License 📗
 
