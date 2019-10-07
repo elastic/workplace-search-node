@@ -68,6 +68,8 @@ nock('https://api.swiftype.com/api/v1/ent', {
     meta: { page: { current: 2, total_pages: 2, total_results: 2, size: 1 } },
     results: [{ user: 'enterprise_search', permissions: [] }]
   })
+  .get(`/sources/${mockContentSourceKey}/permissions/elastic`)
+  .reply(200, { user: 'elastic', permissions: [] })
 
 // Mock for underlying http client libry
 nock('https://example.com', {
@@ -167,6 +169,16 @@ describe('EnterpriseSearchClient', () => {
         },
         results: [{ user: 'enterprise_search', permissions: [] }]
       })
+    })
+  })
+
+  context('#permissions/{user}', () => {
+    it('should get user permissions', async () => {
+      const results = await client.getUserPermissions(
+        mockContentSourceKey,
+        'elastic'
+      )
+      assert.deepEqual(results, { user: 'elastic', permissions: [] })
     })
   })
 })
