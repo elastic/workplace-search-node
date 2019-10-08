@@ -135,7 +135,7 @@ client
 ```javascript
 const contentSourceKey = '' // your content source key
 const user = 'enterprise_search' // username
-const permissions = ['permission1', 'permission2'] // array of permissions to assign to the user
+const permissions = { permissions: ['permission1', 'permission2'] } // permissions to assign to the user
 
 client
   .updateUserPermissions(contentSourceKey, user, permissions)
@@ -152,7 +152,7 @@ client
 ```javascript
 const contentSourceKey = '' // your content source key
 const user = 'enterprise_search' // username
-const permissions = ['permission2'] // array of permissions to add to the user
+const permissions = { permissions: ['permission2'] } // permissions to add to the user
 
 client
   .addUserPermissions(contentSourceKey, user, permissions)
@@ -169,7 +169,7 @@ client
 ```javascript
 const contentSourceKey = '' // your content source key
 const user = 'enterprise_search' // username
-const permissions = ['permission2'] // array of permissions to remove from the user
+const permissions = { permissions: ['permission2'] } //permissions to remove from the user
 
 client
   .removeUserPermissions(contentSourceKey, user, permissions)
