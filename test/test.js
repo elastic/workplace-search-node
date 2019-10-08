@@ -46,7 +46,7 @@ nock('https://api.swiftype.com/api/v1/ent', {
   .reply(200, {
     meta: { page: { current: 1, total_pages: 1, total_results: 2, size: 25 } },
     results: [
-      { user: 'elastic', permissions: [] },
+      { user: 'enterprise_search2', permissions: [] },
       { user: 'enterprise_search', permissions: [] }
     ]
   })
@@ -54,7 +54,7 @@ nock('https://api.swiftype.com/api/v1/ent', {
   .query({ page: { size: 1 } })
   .reply(200, {
     meta: { page: { current: 1, total_pages: 2, total_results: 2, size: 1 } },
-    results: [{ user: 'elastic', permissions: [] }]
+    results: [{ user: 'enterprise_search2', permissions: [] }]
   })
   .get(`/sources/${mockContentSourceKey}/permissions`)
   .query({ page: { current: 2 } })
@@ -68,8 +68,8 @@ nock('https://api.swiftype.com/api/v1/ent', {
     meta: { page: { current: 2, total_pages: 2, total_results: 2, size: 1 } },
     results: [{ user: 'enterprise_search', permissions: [] }]
   })
-  .get(`/sources/${mockContentSourceKey}/permissions/elastic`)
-  .reply(200, { user: 'elastic', permissions: [] })
+  .get(`/sources/${mockContentSourceKey}/permissions/enterprise_search`)
+  .reply(200, { user: 'enterprise_search', permissions: [] })
   .post(`/sources/${mockContentSourceKey}/permissions/enterprise_search`, {
     permissions: ['permission1']
   })
@@ -147,7 +147,7 @@ describe('EnterpriseSearchClient', () => {
           page: { current: 1, total_pages: 1, total_results: 2, size: 25 }
         },
         results: [
-          { user: 'elastic', permissions: [] },
+          { user: 'enterprise_search2', permissions: [] },
           { user: 'enterprise_search', permissions: [] }
         ]
       })
@@ -161,7 +161,7 @@ describe('EnterpriseSearchClient', () => {
         meta: {
           page: { current: 1, total_pages: 2, total_results: 2, size: 1 }
         },
-        results: [{ user: 'elastic', permissions: [] }]
+        results: [{ user: 'enterprise_search2', permissions: [] }]
       })
     })
 
@@ -195,9 +195,9 @@ describe('EnterpriseSearchClient', () => {
     it('should get user permissions', async () => {
       const results = await client.getUserPermissions(
         mockContentSourceKey,
-        'elastic'
+        'enterprise_search'
       )
-      assert.deepEqual(results, { user: 'elastic', permissions: [] })
+      assert.deepEqual(results, { user: 'enterprise_search', permissions: [] })
     })
   })
 
