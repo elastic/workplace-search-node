@@ -98,14 +98,14 @@ client
   })
 ```
 
-### Getting permissions list
+### Listing all permissions
 
 ```javascript
 const contentSourceKey = '' // your content source key
 const pageParams = { currentPage: 2, pageSize: 20 } // optional argument
 
 client
-  .getPermissions(contentSourceKey, pageParams)
+  .listAllPermissions(contentSourceKey, pageParams)
   .then(response => {
     // handle response
   })
