@@ -206,7 +206,7 @@ describe('EnterpriseSearchClient', () => {
       const results = await client.updateUserPermissions(
         mockContentSourceKey,
         'enterprise_search',
-        ['permission1']
+        { permissions: ['permission1'] }
       )
       assert.deepEqual(results, {
         user: 'enterprise_search',
@@ -220,7 +220,7 @@ describe('EnterpriseSearchClient', () => {
       const results = await client.addUserPermissions(
         mockContentSourceKey,
         'enterprise_search',
-        ['permission2']
+        { permissions: ['permission2'] }
       )
       assert.deepEqual(results, {
         user: 'enterprise_search',
@@ -234,7 +234,7 @@ describe('EnterpriseSearchClient', () => {
       const results = await client.removeUserPermissions(
         mockContentSourceKey,
         'enterprise_search',
-        ['permission2']
+        { permissions: ['permission2'] }
       )
       assert.deepEqual(results, {
         user: 'enterprise_search',
