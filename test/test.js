@@ -175,7 +175,7 @@ describe('EnterpriseSearchClient', () => {
       })
     })
   })
-  
+
   context('#permissions/{user} (GET)', () => {
     it('should get user permissions', async () => {
       const results = await client.getUserPermissions(
