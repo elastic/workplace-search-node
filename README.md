@@ -130,6 +130,23 @@ client
   })
 ```
 
+### Updating user permissions
+
+```javascript
+const contentSourceKey = '' // your content source key
+const user = 'enterprise_search' // username
+const permissions = ['permission1', 'permission2'] // array of permissions to assign to the user
+
+client
+  .updateUserPermissions(contentSourceKey, user, permissions)
+  .then(response => {
+    // handle response
+  })
+  .catch(error => {
+    // handle error
+  })
+```
+
 ## Running tests
 
 Run tests via npm:

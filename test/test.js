@@ -70,6 +70,10 @@ nock('https://api.swiftype.com/api/v1/ent', {
   })
   .get(`/sources/${mockContentSourceKey}/permissions/elastic`)
   .reply(200, { user: 'elastic', permissions: [] })
+  .post(`/sources/${mockContentSourceKey}/permissions/enterprise_search`, {
+    permissions: ['permission1']
+  })
+  .reply(200, { user: 'enterprise_search', permissions: ['permission1'] })
 
 // Mock for underlying http client libry
 nock('https://example.com', {
@@ -172,13 +176,27 @@ describe('EnterpriseSearchClient', () => {
     })
   })
 
-  context('#permissions/{user}', () => {
+  context('#permissions/{user} (GET)', () => {
     it('should get user permissions', async () => {
       const results = await client.getUserPermissions(
         mockContentSourceKey,
         'elastic'
       )
       assert.deepEqual(results, { user: 'elastic', permissions: [] })
+    })
+  })
+
+  context('#permissions/{user} (POST)', () => {
+    it('should update user permissions', async () => {
+      const results = await client.updateUserPermissions(
+        mockContentSourceKey,
+        'enterprise_search',
+        ['permission1']
+      )
+      assert.deepEqual(results, {
+        user: 'enterprise_search',
+        permissions: ['permission1']
+      })
     })
   })
 })
