@@ -81,6 +81,14 @@ nock('https://api.swiftype.com/api/v1/ent', {
     user: 'enterprise_search',
     permissions: ['permission1', 'permission2']
   })
+  .post(
+    `/sources/${mockContentSourceKey}/permissions/enterprise_search/remove`,
+    { permissions: ['permission2'] }
+  )
+  .reply(200, {
+    user: 'enterprise_search',
+    permissions: ['permission1']
+  })
 
 // Mock for underlying http client libry
 nock('https://example.com', {
@@ -217,6 +225,20 @@ describe('EnterpriseSearchClient', () => {
       assert.deepEqual(results, {
         user: 'enterprise_search',
         permissions: ['permission1', 'permission2']
+      })
+    })
+  })
+
+  context('#permissions/{user}/remove', () => {
+    it('should remove user permissions', async () => {
+      const results = await client.removeUserPermissions(
+        mockContentSourceKey,
+        'enterprise_search',
+        ['permission2']
+      )
+      assert.deepEqual(results, {
+        user: 'enterprise_search',
+        permissions: ['permission1']
       })
     })
   })
