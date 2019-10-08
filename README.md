@@ -114,6 +114,22 @@ client
   })
 ```
 
+### Getting user permissions
+
+```javascript
+const contentSourceKey = '' // your content source key
+const user = 'elastic'
+
+client
+  .getUserPermissions(contentSourceKey, user)
+  .then(response => {
+    // handle response
+  })
+  .catch(error => {
+    // handle error
+  })
+```
+
 ## Running tests
 
 Run tests via npm:
