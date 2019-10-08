@@ -141,7 +141,7 @@ describe('EnterpriseSearchClient', () => {
 
   context('#permissions', () => {
     it('should list permissions', async () => {
-      const results = await client.getPermissions(mockContentSourceKey)
+      const results = await client.listAllPermissions(mockContentSourceKey)
       assert.deepEqual(results, {
         meta: {
           page: { current: 1, total_pages: 1, total_results: 2, size: 25 }
@@ -154,7 +154,7 @@ describe('EnterpriseSearchClient', () => {
     })
 
     it('should pass page size', async () => {
-      const results = await client.getPermissions(mockContentSourceKey, {
+      const results = await client.listAllPermissions(mockContentSourceKey, {
         pageSize: 1
       })
       assert.deepEqual(results, {
@@ -166,7 +166,7 @@ describe('EnterpriseSearchClient', () => {
     })
 
     it('should pass current page', async () => {
-      const results = await client.getPermissions(mockContentSourceKey, {
+      const results = await client.listAllPermissions(mockContentSourceKey, {
         currentPage: 2
       })
       assert.deepEqual(results, {
@@ -178,7 +178,7 @@ describe('EnterpriseSearchClient', () => {
     })
 
     it('should pass page size and current page', async () => {
-      const results = await client.getPermissions(mockContentSourceKey, {
+      const results = await client.listAllPermissions(mockContentSourceKey, {
         pageSize: 1,
         currentPage: 2
       })
