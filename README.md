@@ -147,6 +147,23 @@ client
   })
 ```
 
+### Adding user permissions
+
+```javascript
+const contentSourceKey = '' // your content source key
+const user = 'enterprise_search' // username
+const permissions = ['permission2'] // array of permissions to add to the user
+
+client
+  .addUserPermissions(contentSourceKey, user, permissions)
+  .then(response => {
+    // handle response
+  })
+  .catch(error => {
+    // handle error
+  })
+```
+
 ## Running tests
 
 Run tests via npm:
