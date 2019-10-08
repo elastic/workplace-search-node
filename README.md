@@ -118,7 +118,7 @@ client
 
 ```javascript
 const contentSourceKey = '' // your content source key
-const user = 'elastic'
+const user = 'enterprise_search' // username
 
 client
   .getUserPermissions(contentSourceKey, user)
