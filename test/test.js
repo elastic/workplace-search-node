@@ -25,7 +25,7 @@ const mockDocuments = [
   }
 ]
 const clientName = 'elastic-enterprise-search-node'
-const clientVersion = '0.2.0'
+const clientVersion = '0.3.0'
 
 // Mock for Enterprise Search client
 nock('https://api.swiftype.com/api/v1/ent', {
