@@ -1,5 +1,3 @@
-<p align="center"><img src="https://github.com/elastic/enterprise-search-node/blob/master/logo-enterprise-search.png?raw=true" alt="Elastic Enterprise Search Logo"></p>
-
 <p align="center"><a href="https://circleci.com/gh/elastic/enterprise-search-node"><img src="https://circleci.com/gh/elastic/enterprise-search-node.svg?style=svg" alt="CircleCI build"></a></p>
 
 > A first-party Node.js client for [Elastic Enterprise Search](https://www.elastic.co/solutions/enterprise-search).
