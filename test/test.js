@@ -28,7 +28,7 @@ const clientName = 'elastic-workplace-search-node'
 const clientVersion = '0.3.0'
 
 // Mock for Workplace Search client
-nock('https://api.swiftype.com/api/v1/ent', {
+nock('https://api.swiftype.com/api/ws/v1', {
   reqheaders: {
     authorization: `Bearer ${mockAccessToken}`,
     'x-swiftype-client': clientName,
@@ -110,7 +110,7 @@ nock('https://example.com', {
 describe('WorkplaceSearchClient', () => {
   const client = new WorkplaceSearchClient(
     mockAccessToken,
-    'https://api.swiftype.com/api/v1/ent'
+    'https://api.swiftype.com/api/ws/v1'
   )
 
   context('#indexDocuments', () => {

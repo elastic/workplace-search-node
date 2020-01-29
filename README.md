@@ -43,7 +43,7 @@ const client = new WorkplaceSearchClient(accessToken)
 ```javascript
 const client = new WorkplaceSearchClient(
   accessToken,
-  'https://your-server.example.com/api/v1/ent'
+  'https://your-server.example.com/api/ws/v1'
 )
 ```
 
