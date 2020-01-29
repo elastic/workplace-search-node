@@ -2,7 +2,7 @@
 
 const assert = require('assert')
 const nock = require('nock')
-const EnterpriseSearchClient = require('../lib/enterpriseSearch')
+const EnterpriseSearchClient = require('../lib/workplaceSearch')
 const HttpClient = require('../lib/client')
 const packageJson = require('../package.json')
 
