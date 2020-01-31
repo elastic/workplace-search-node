@@ -25,7 +25,7 @@ const mockDocuments = [
   }
 ]
 const clientName = 'elastic-workplace-search-node'
-const clientVersion = '0.3.0'
+const clientVersion = '0.4.0'
 
 // Mock for Workplace Search client
 nock('https://api.swiftype.com/api/ws/v1', {
