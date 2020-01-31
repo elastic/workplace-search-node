@@ -1,8 +1,6 @@
-<p align="center"><img src="https://github.com/elastic/enterprise-search-node/blob/master/logo-enterprise-search.png?raw=true" alt="Elastic Enterprise Search Logo"></p>
+<p align="center"><a href="https://circleci.com/gh/elastic/workplace-search-node"><img src="https://circleci.com/gh/elastic/workplace-search-node.svg?style=svg" alt="CircleCI build"></a></p>
 
-<p align="center"><a href="https://circleci.com/gh/elastic/enterprise-search-node"><img src="https://circleci.com/gh/elastic/enterprise-search-node.svg?style=svg" alt="CircleCI build"></a></p>
-
-> A first-party Node.js client for [Elastic Enterprise Search](https://www.elastic.co/solutions/enterprise-search).
+> A first-party Node.js client for [Elastic Workplace Search](https://www.elastic.co/workplace-search).
 
 ## Contents
 
@@ -19,33 +17,33 @@
 With npm:
 
 ```bash
-npm install @elastic/enterprise-search-node
+npm install @elastic/workplace-search-node
 ```
 
 or clone locally:
 
 ```bash
-git clone git@github.com:elastic/enterprise-search-node.git
-cd enterprise-search-node
+git clone git@github.com:elastic/workplace-search-node.git
+cd workplace-search-node
 npm install
 ```
 
 ## Usage
 
-Create a new instance of the Elastic Enterprise Search Client with your access token:
+Create a new instance of the Elastic Workplace Search Client with your access token:
 
 ```javascript
-const EnterpriseSearchClient = require('@elastic/enterprise-search-node')
+const WorkplaceSearchClient = require('@elastic/workplace-search-node')
 const accessToken = '' // your access token
-const client = new EnterpriseSearchClient(accessToken)
+const client = new WorkplaceSearchClient(accessToken)
 ```
 
 ### Change API endpoint
 
 ```javascript
-const client = new EnterpriseSearchClient(
+const client = new WorkplaceSearchClient(
   accessToken,
-  'https://your-server.example.com/api/v1/ent'
+  'https://your-server.example.com/api/ws/v1'
 )
 ```
 
@@ -193,17 +191,17 @@ $ npm test
 
 ### Where do I report issues with the client?
 
-If something is not working as expected, please open an [issue](https://github.com/elastic/enterprise-search-node/issues/new).
+If something is not working as expected, please open an [issue](https://github.com/elastic/workplace-search-node/issues/new).
 
 ## Contribute 🚀
 
 We welcome contributors to the project. Before you begin, a couple notes...
 
-- Before opening a pull request, please create an issue to [discuss the scope of your proposal](https://github.com/elastic/enterprise-search-node/issues).
+- Before opening a pull request, please create an issue to [discuss the scope of your proposal](https://github.com/elastic/workplace-search-node/issues).
 - Please write simple code and concise documentation, when appropriate.
 
 ## License 📗
 
-[Apache 2.0](https://github.com/elastic/enterprise-search-node/blob/master/LICENSE.txt) © [Elastic](https://github.com/elastic)
+[Apache 2.0](https://github.com/elastic/workplace-search-node/blob/master/LICENSE.txt) © [Elastic](https://github.com/elastic)
 
-Thank you to all the [contributors](https://github.com/elastic/enterprise-search-node/graphs/contributors)!
+Thank you to all the [contributors](https://github.com/elastic/workplace-search-node/graphs/contributors)!

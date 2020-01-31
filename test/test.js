@@ -2,7 +2,7 @@
 
 const assert = require('assert')
 const nock = require('nock')
-const EnterpriseSearchClient = require('../lib/enterpriseSearch')
+const WorkplaceSearchClient = require('../lib/workplaceSearch')
 const HttpClient = require('../lib/client')
 const packageJson = require('../package.json')
 
@@ -24,11 +24,11 @@ const mockDocuments = [
     url: 'https://www.shopify.com/content/how-to-profit-from-your-passions'
   }
 ]
-const clientName = 'elastic-enterprise-search-node'
+const clientName = 'elastic-workplace-search-node'
 const clientVersion = '0.3.0'
 
-// Mock for Enterprise Search client
-nock('https://api.swiftype.com/api/v1/ent', {
+// Mock for Workplace Search client
+nock('https://api.swiftype.com/api/ws/v1', {
   reqheaders: {
     authorization: `Bearer ${mockAccessToken}`,
     'x-swiftype-client': clientName,
@@ -107,10 +107,10 @@ nock('https://example.com', {
   .post('/error', { foo: 'bar' })
   .reply(500, { hello: 'world' })
 
-describe('EnterpriseSearchClient', () => {
-  const client = new EnterpriseSearchClient(
+describe('WorkplaceSearchClient', () => {
+  const client = new WorkplaceSearchClient(
     mockAccessToken,
-    'https://api.swiftype.com/api/v1/ent'
+    'https://api.swiftype.com/api/ws/v1'
   )
 
   context('#indexDocuments', () => {
