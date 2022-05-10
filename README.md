@@ -1,3 +1,13 @@
+> **⚠️ This client is deprecated ⚠️**
+>
+> As of Enterprise Search version 8.2.0, we are directing users to the new [Enterprise Search Node Client](https://github.com/elastic/enterprise-search-js) and
+> deprecating this client.
+>
+> Our development effort on this project will be limited to bug fixes.
+> All future enhancements will be focused on the Enterprise Search PHP Client.
+>
+> Thank you! - Elastic
+
 <p align="center"><a href="https://circleci.com/gh/elastic/workplace-search-node"><img src="https://circleci.com/gh/elastic/workplace-search-node.svg?style=svg" alt="CircleCI build"></a></p>
 
 > A first-party Node.js client for [Elastic Workplace Search](https://www.elastic.co/workplace-search).
